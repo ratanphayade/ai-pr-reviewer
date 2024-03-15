@@ -101,8 +101,8 @@ async function run(): Promise<void> {
   }
 
   try {
-    console.log("event_received");
-    console.log(process.env.GITHUB_EVENT_NAME);
+    warning(`event_received: ${process.env.GITHUB_EVENT_NAME}`);
+  
     // check if the event is pull_request
     if (
       process.env.GITHUB_EVENT_NAME === 'pull_request' ||
