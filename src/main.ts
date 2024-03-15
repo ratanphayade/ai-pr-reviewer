@@ -6,7 +6,7 @@ import {
   warning
 } from '@actions/core'
 import {Bot} from './bot'
-import { onDemandCodeReview } from './ondemand-review'
+// import {onDemandCodeReview} from './ondemand-review'
 import {OpenAIOptions, Options} from './options'
 import {Prompts} from './prompts'
 import {codeReview} from './review'
@@ -64,7 +64,6 @@ async function run(): Promise<void> {
     getInput('language')
   )
 
-  warning(`event_received: ${process.env.GITHUB_EVENT_NAME}`);
   // print options
   options.print()
 
@@ -110,7 +109,8 @@ async function run(): Promise<void> {
       await codeReview(lightBot, heavyBot, options, prompts)
     } 
     else if (process.env.GITHUB_EVENT_NAME === 'issue_comment') {
-      await onDemandCodeReview(lightBot, heavyBot, options, prompts)
+      warning(`comment received`)
+      // await onDemandCodeReview(lightBot, heavyBot, options, prompts)
     }
     else {
       warning('Skipped: this action only works on push events or pull_request')
