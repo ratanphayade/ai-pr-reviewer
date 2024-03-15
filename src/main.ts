@@ -65,7 +65,7 @@ async function run(): Promise<void> {
   )
 
   // print options
-  options.print()
+  // options.print()
 
   const prompts: Prompts = new Prompts(
     getInput('summarize'),
