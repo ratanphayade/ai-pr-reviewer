@@ -64,6 +64,7 @@ async function run(): Promise<void> {
     getInput('language')
   )
 
+  warning(`event_received: ${process.env.GITHUB_EVENT_NAME}`);
   // print options
   options.print()
 
@@ -101,8 +102,6 @@ async function run(): Promise<void> {
   }
 
   try {
-    warning(`event_received: ${process.env.GITHUB_EVENT_NAME}`);
-  
     // check if the event is pull_request
     if (
       process.env.GITHUB_EVENT_NAME === 'pull_request' ||
