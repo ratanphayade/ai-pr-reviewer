@@ -65,7 +65,7 @@ async function run(): Promise<void> {
   )
 
   // print options
-  // options.print()
+  options.print()
 
   const prompts: Prompts = new Prompts(
     getInput('summarize'),
@@ -101,6 +101,7 @@ async function run(): Promise<void> {
   }
 
   try {
+    warning(`Event Name: ${process.env.GITHUB_EVENT_NAME}`)
     // check if the event is pull_request
     if (
       process.env.GITHUB_EVENT_NAME === 'pull_request' ||
